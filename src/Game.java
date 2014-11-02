@@ -15,8 +15,8 @@ public class Game {
 	// Tworzy dwuch graczy i zaznacza jednego jako "player1"
 	
 	private void resetPlayers(){
-		player1 = new Player("X");
-        player2 = new Player("O");
+		//player1 = new Player("X");
+       // player2 = new Player("O");
         setActive(player1);
 	}
 
@@ -25,7 +25,7 @@ public class Game {
 	private void resetTable() {
         for (int i = 0, l = table.length; i < l; i++) {
             for (int j = 0, l2 = table[i].length; j < l2; j++) {
-                table[i][j].fill(null);
+               // table[i][j].fill(null);
             }
         }
         filled = 0;
@@ -49,10 +49,10 @@ public class Game {
 	 // Sprawdza czy wybrana klatka jest zajęta
 	 // Jerzeli klatka jest wolna ustawia odpowiednią figure
 	 public boolean makeTurn(int x, int y) {
-	        if (table[x][y].isTableFilled{
+	      /*  if (table[x][y].isTableFilled{
 	            return false;
-	        }
-	        table[x][y].fill(getActive());
+	        }*/
+	       // table[x][y].fill(getActive());
 	        filled++;
 	        switchPlayers();
 	        return true;
@@ -68,10 +68,10 @@ public class Game {
 	        return squareCount == filled;
 	    }
 	 
-	 public int check(){
+
 		 
 	 
 		 
 	 }
  
-}
+
