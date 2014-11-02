@@ -1,6 +1,6 @@
 
 public class WinnerChecker {
-	private Game game;
+	private Game currentGame;
 	//metoda ustawia zmienna game zadana zmienna
 	public WinnerChecker(Game p_game){
 	this.game = p_game;
