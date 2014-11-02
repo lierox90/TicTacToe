@@ -7,6 +7,6 @@ public class Player {
 	}
 	//metoda zwraca zmienna name
     public String getName() {
-    	return this.name;
+    	return (String) name;
     }
 }

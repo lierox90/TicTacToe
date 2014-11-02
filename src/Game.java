@@ -7,7 +7,7 @@ public class Game {
 	
 	private Tile[][] table;
 	
-	private int squareCount=9;
+	private int squareCount = 9;
 	private int filled;
 	
 	private WinnerChecker winCheck;
@@ -15,8 +15,8 @@ public class Game {
 	// Tworzy dwuch graczy i zaznacza jednego jako "player1"
 	
 	private void resetPlayers(){
-		//player1 = new Player("X");
-       // player2 = new Player("O");
+		player1 = new Player("Xsd");
+        player2 = new Player("Osd");
         setActive(player1);
 	}
 
@@ -25,23 +25,23 @@ public class Game {
 	private void resetTable() {
         for (int i = 0, l = table.length; i < l; i++) {
             for (int j = 0, l2 = table[i].length; j < l2; j++) {
-               // table[i][j].fill(null);
+               table[i][j].isMarked();
             }
         }
         filled = 0;
     }
 
-	// Zwraca wartość table
+	// Zwraca wartosc table
 	 public Tile[][] getTable() {
 	        return table;
 	 }
 	 
-	 // Ustawia wartość activePlayer
+	 // Ustawia wartosc activePlayer
 	 private void setActive(Player player) {
 	        activePlayer = player;
 	 }
 	 
-	 // Zwraca wartość activePlayer
+	 // Zwraca wartosc activePlayer
 	 public Player getActive() {
 	        return activePlayer;
 	 }
@@ -49,10 +49,10 @@ public class Game {
 	 // Sprawdza czy wybrana klatka jest zajęta
 	 // Jerzeli klatka jest wolna ustawia odpowiednią figure
 	 public boolean makeTurn(int x, int y) {
-	      /*  if (table[x][y].isTableFilled{
+	        if (table[x][y].isMarked()){
 	            return false;
-	        }*/
-	       // table[x][y].fill(getActive());
+	        }
+	        table[x][y].setPlayer(getActive());
 	        filled++;
 	        switchPlayers();
 	        return true;
@@ -63,7 +63,7 @@ public class Game {
 	        activePlayer = (activePlayer == player1) ? player2 : player1;
 	    }
 
-	 // Zwraca wartość squareCount
+	 // Zwraca wartosc squareCount
 	 public boolean isTableFilled() {
 	        return squareCount == filled;
 	    }
