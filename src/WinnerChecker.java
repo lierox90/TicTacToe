@@ -3,12 +3,12 @@ public class WinnerChecker {
 	private Game currentGame;
 	//metoda ustawia zmienna game zadana zmienna
 	public WinnerChecker(Game p_game){
-	this.game = p_game;
+	this.currentGame = p_game;
 	}
 	
 	//Sprawdzenie czy istnieje poziomowa kombinacja, ktora wygrywa 
 	private Player checkHorizontal() {
-        Tile[][] field = game.getTable();
+        Tile[][] field = currentGame.getTable();
         Player currPlayer;
         Player lastPlayer = null;
         for (int i = 0, len = field.length; i < len; i++) {
@@ -30,7 +30,7 @@ public class WinnerChecker {
 	
 	//Sprawdzenie czy istnieje pionowa kombinacja, ktora wygrywa 
 	private Player checkVertical() {
-        Tile[][] field = game.getTable();
+        Tile[][] field = currentGame.getTable();
         Player currPlayer;
         Player lastPlayer = null;
         for (int i = 0, len = field.length; i < len; i++) {
@@ -52,7 +52,7 @@ public class WinnerChecker {
 	
 	//Sprawdzenie czy istnieje diagonalna od lewej strony kombinacja, ktora wygrywa 
 	 private Player checkDiagonalLeft() {
-	        Tile[][] field = game.getTable();
+	        Tile[][] field = currentGame.getTable();
 	        Player currPlayer;
 	        Player lastPlayer = null;
 	        int successCounter = 1;
@@ -73,7 +73,7 @@ public class WinnerChecker {
 	 
 	//Sprawdzenie czy istnieje diagonalna od prawej strony kombinacja, ktora wygrywa 
 	 private Player checkDiagonalRight() {
-	        Tile[][] field = game.getTable();
+	        Tile[][] field = currentGame.getTable();
 	        Player currPlayer;
 	        Player lastPlayer = null;
 	        int successCounter = 1;
