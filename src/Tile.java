@@ -3,7 +3,7 @@ public class Tile {
     private Player player = null;
     
     //metoda ustawia zmienna player zadanej zmiennej
-    public void fill(Player p_player) {
+    public void setPlayer(Player p_player) {
         this.player = p_player;
     }
     //metoda sprawdza czy pole nie jest zajete
