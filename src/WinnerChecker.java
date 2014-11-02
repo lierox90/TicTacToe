@@ -96,7 +96,7 @@ public class WinnerChecker {
 	 //jesli istneje taka kombinacja, to zwraca m_player
 	 //jesli takiej kombinacji nie ma, to zwraca null
 	 public Player check(){
-		 Player m_player;
+		 Player m_player = null;
 		 m_player = checkHorizontal();
 		
 		 if(m_player == null)
@@ -107,11 +107,7 @@ public class WinnerChecker {
 		
 		 else if(m_player == null)
 		 m_player = checkDiagonalRight();
-		
-		 else if(m_player == null)
-		 return null;
-		
-		 else
+		 
 		 return m_player;
 		
 	}
