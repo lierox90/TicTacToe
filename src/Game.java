@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
-
-
 public class Game {
 	
 	private Player player1;
