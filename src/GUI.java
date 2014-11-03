@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 
 public class GUI extends JFrame 
 {
@@ -23,6 +25,8 @@ public class GUI extends JFrame
     private JButton reset;
     private JLabel panelX;
     private JLabel panelO;
+    private Border border;
+
     public GUI() throws IOException 
     {
     	//Window init
@@ -33,15 +37,27 @@ public class GUI extends JFrame
         setVisible(true);
         setLayout(null);
         setLocationRelativeTo(null);
+        //border for active
+        border = BorderFactory.createLineBorder(Color.BLUE, 5);
         //Symbols
-        buttonX = new ImageIcon(getClass().getResource("/resources/buttons/delete30.png"));
-        buttonO = new ImageIcon(getClass().getResource("/resources/buttons/circle107.png"));
+        buttonX = new ImageIcon(getClass().getResource("/resources/buttons/fire40.png"));
+        buttonO = new ImageIcon(getClass().getResource("/resources/buttons/water12.png"));
         //Reset button
         reset = new JButton("Reset");
-        reset.setBounds(width/2-20, 10, 40, 40);
+        reset.setBounds(width/2-40, 10, 80, 40);
+        reset.addActionListener(new ActionListener() 
+    	{ 
+    		public void actionPerformed(ActionEvent e)
+            {
+    			game.reset();
+    			reset();
+            }
+    		
+        });
         //active player panels
         panelX = new JLabel(buttonX);
         panelX.setBounds(10, 10, buttonX.getIconWidth(), buttonX.getIconHeight());
+        panelX.setBorder(border);
         panelO = new JLabel(buttonO);
         panelO.setBounds(width-10-buttonX.getIconWidth(),10, buttonO.getIconWidth(), buttonO.getIconHeight());
         //Game object
@@ -66,25 +82,39 @@ public class GUI extends JFrame
                     	if(game.makeTurn(x, y))
                     	{
                     		if(playerSymbol == "X")
+                    		{
                     			buttons.get(x).get(y).setIcon(buttonX);
+                    			panelX.setBorder(null);
+                    			panelO.setBorder(border);
+                    		}
                     		else
+                    		{
                     			buttons.get(x).get(y).setIcon(buttonO);
+                    			panelX.setBorder(border);
+                    			panelO.setBorder(null);
+                    		}
                     		switch (game.check()) 
                     		{
 					            case 0:
 					            {
 					            	JOptionPane.showMessageDialog(null, "Remis");
+					            	game.reset();
+					            	reset();
 					            	break;
 					            }
 					                     
 					            case 1:
 					            {
-					            	JOptionPane.showMessageDialog(null, "Wygra³ Gracz X");
+					            	JOptionPane.showMessageDialog(null, "Wygra³ Ogieñ");
+					            	game.reset();
+					            	reset();
 					            	break;
 					            }					            		
 					            case 2:
 					            {
-					            	JOptionPane.showMessageDialog(null, "Wygra³ Gracz O");
+					            	JOptionPane.showMessageDialog(null, "Wygra³a Woda");
+					            	game.reset();
+					            	reset();
 					            	break;
 					            }
                     		}
@@ -106,6 +136,18 @@ public class GUI extends JFrame
         this.add(panelO);
         this.add(reset);
         this.setBackground(new Color(255,255,255));
+    }
+    void reset()
+    {
+    	for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+            	buttons.get(i).get(j).setIcon(null);
+            }
+        }
+		panelX.setBorder(border);
+		panelO.setBorder(null);
     }
     void setButtons()
     {
