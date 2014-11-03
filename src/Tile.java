@@ -1,13 +1,14 @@
 public class Tile 
 {
+	//Decides about mark type
     private Player player = null;
     
-    //metoda ustawia zmienna player zadanej zmiennej
+    //Marks player signature upon selection
     public void setPlayer(Player p_player) 
     {
         this.player = p_player;
     }
-    //metoda sprawdza czy pole nie jest zajete
+    //Checks if signature is placed upon selected tile
     public boolean isMarked() 
     {
         if (player != null) 
@@ -16,11 +17,12 @@ public class Tile
         }
         return false;
     }
-    //metoda zwraca zmienna player
+    //Return signature of player that selected this tile
     public Player getPlayer() 
     {
         return player;
     }
+    //Clears tile upon interrupted of finished game
     public void clear()
     {
     	player = null;

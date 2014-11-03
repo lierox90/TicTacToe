@@ -15,6 +15,7 @@ import javax.swing.border.Border;
 
 public class GUI extends JFrame 
 {
+	//Declaration of all used objects
 	private Game game;
 	private List<ArrayList<JButton>> buttons;
 	private int width = 300;
@@ -25,7 +26,8 @@ public class GUI extends JFrame
     private JLabel panelX;
     private JLabel panelO;
     private Border border;
-
+    
+    //Constructor creating visible window
     public GUI() throws IOException 
     {
     	//Window init
@@ -36,7 +38,7 @@ public class GUI extends JFrame
         setVisible(true);
         setLayout(null);
         setLocationRelativeTo(null);
-        //border for active
+        //Border marking selected user
         border = BorderFactory.createLineBorder(Color.BLUE, 5);
         //Symbols
         buttonX = new ImageIcon(getClass().getResource("/resources/buttons/fire40.png"));
@@ -53,7 +55,7 @@ public class GUI extends JFrame
             }
     		
         });
-        //active player panels
+        //Active player panels
         panelX = new JLabel(buttonX);
         panelX.setBounds(6, 6, buttonX.getIconWidth(), buttonX.getIconHeight());
         panelX.setBorder(border);
@@ -73,6 +75,7 @@ public class GUI extends JFrame
             	buttons.get(i).get(j).setFocusable(false);
             	final int x = i;
             	final int y = j;
+            	//Action listener performing selection of certain tile
             	buttons.get(i).get(j).addActionListener(new ActionListener() 
             	{ 
             		public void actionPerformed(ActionEvent e)
@@ -92,6 +95,7 @@ public class GUI extends JFrame
                     			panelX.setBorder(border);
                     			panelO.setBorder(null);
                     		}
+                    		//Checking conditions of win
                     		switch (game.check()) 
                     		{
 					            case 0:
@@ -122,8 +126,9 @@ public class GUI extends JFrame
                 });
             }
         }
+        //Visual placement of butons
         setButtons();
-        // Main addition
+        //Proper object inclusion into main Frame
         for(int i=0;i<3;i++)
         {
             for(int j=0;j<3;j++)
@@ -136,6 +141,7 @@ public class GUI extends JFrame
         this.add(reset);
         this.setBackground(new Color(255,255,255));
     }
+    //GUI reset
     void reset()
     {
     	for(int i=0;i<3;i++)
@@ -148,6 +154,7 @@ public class GUI extends JFrame
 		panelX.setBorder(border);
 		panelO.setBorder(null);
     }
+    //Provieds coordinates for visual placement of buttons
     void setButtons()
     {
     	int step = (width-6)/3;

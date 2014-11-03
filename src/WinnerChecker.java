@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class WinnerChecker 
 {
+	//Provides visibility for Game object
 	private Game currentGame;
 	
-	//metoda ustawia zmienna game zadana zmienna
+	//Constructor for our victory checker
 	public WinnerChecker(Game p_game)
 	{
-	this.currentGame = p_game;
+		this.currentGame = p_game;
 	}
-	//Sprawdzenie czy istnieje poziomowa kombinacja, ktora wygrywa 
+	//Checks horizontal possibility of victory
 	private Player checkHorizontal() 
 	{
 		List<ArrayList<Tile>> field = currentGame.getTable();
@@ -37,7 +37,7 @@ public class WinnerChecker
         }
         return null;
     }
-	//Sprawdzenie czy istnieje pionowa kombinacja, ktora wygrywa 
+	//Checks vertical possibility of victory
 	private Player checkVertical() 
 	{
 		List<ArrayList<Tile>> field = currentGame.getTable();
@@ -63,7 +63,7 @@ public class WinnerChecker
         }
         return null;
     }
-	//Sprawdzenie czy istnieje diagonalna od lewej strony kombinacja, ktora wygrywa 
+	//Checks diagonal left possibility of victory 
 	private Player checkDiagonalLeft() 
 	{
 		List<ArrayList<Tile>> field = currentGame.getTable();
@@ -89,7 +89,7 @@ public class WinnerChecker
 	    return null;
 	}
 	 
-	//Sprawdzenie czy istnieje diagonalna od prawej strony kombinacja, ktora wygrywa 
+	//Checks diagonal right possibility of victory
 	private Player checkDiagonalRight() 
 	{
 		List<ArrayList<Tile>> field = currentGame.getTable();
@@ -114,10 +114,7 @@ public class WinnerChecker
 	    }
 	    return null;
 	}
-	 
-	//metoda, ktora po kolei sprawdza czy istneje mozliwa wygrywalna kombinacja
-	//jesli istneje taka kombinacja, to zwraca m_player
-	//jesli takiej kombinacji nie ma, to zwraca null
+	//Wraps previous methods, provides proper player object of winner if conditions are met
 	public Player check()
 	{
 		Player m_player = null;

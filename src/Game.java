@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Game 
 {
+	//Declaration of used variables
 	private Player player1;
 	private Player player2;
 	private Player activePlayer;
@@ -10,7 +11,7 @@ public class Game
 	private int squareCount = 9;
 	private int filled;
 	private WinnerChecker winCheck;
-	//konstruktor do tworzenia nowych graczy i sadzia na poczatku gry
+	//Game type object constructor
 	public Game()
 	{
 		player1 = new Player();
@@ -28,14 +29,14 @@ public class Game
         }
         winCheck = new WinnerChecker(this);
 	}
-	// Tworzy dwuch graczy i zaznacza jednego jako "player1"
+	//Reseting players after interrupted or finished games
 	private void resetPlayers()
 	{
 		player1.setName("X");
         player2.setName("O");
         setActive(player1);
 	}
-	//Wyczyszcza tablice
+	//Reseting board after interrupted or finished games
 	private void resetTable() 
 	{
         for (int i = 0, l = table.size(); i < l; i++) 
@@ -47,30 +48,28 @@ public class Game
         }
         filled = 0;
     }
-	//Resetuje calosc
+	//Reset functionality wrapper, visible outside of class scope
 	public void reset()
 	{
 		resetPlayers();
 		resetTable();
 	}
-	// Zwraca wartosc tables
-	
+	//Returns game board
 	public List<ArrayList<Tile>> getTable()
 	{
         return table;
     }
-	// Ustawia wartosc activePlayer
+	//Sets current player
 	private void setActive(Player player) 
 	{
         activePlayer = player;
 	}
-	// Zwraca wartosc activePlayer
+	//Return current player
 	public Player getActive() 
 	{
 	    return activePlayer;
 	}
-	// Sprawdza czy wybrana klatka jest zajęta
-	// Jerzeli klatka jest wolna ustawia odpowiednią figure
+	//Conducts move if possible
 	public boolean makeTurn(int x, int y) 
 	{
 		if (table.get(x).get(y).isMarked())
@@ -82,18 +81,17 @@ public class Game
 	    switchPlayers();
 	    return true;
 	}
-	// Sprawdza który player jest aktywny i przepisuje wynik do activePlayer
+	//Switches currently selected player
 	public void switchPlayers() 
 	{
 		activePlayer = (activePlayer == player1) ? player2 : player1;
 	}
-	// Zwraca wartosc squareCount
+	//Checks if game board is maximally filled
 	public boolean isTableFilled() 
 	{
 		return squareCount == filled;
 	}
-	//metoda sluzaca do sprawdzania kto z graczy wygral albo czy jest remis i zwracajaca wartosc
-	//code, ktora bedzie odpowiedziana za odpowiednie pop-upy
+	//Wrapper for checking possible victory
 	public int check()
 	{
 		int code=-1;
