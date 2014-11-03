@@ -1,16 +1,14 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class GUI extends JFrame 
@@ -19,10 +17,11 @@ public class GUI extends JFrame
 	private List<ArrayList<JButton>> buttons;
 	private int width = 300;
 	private int heigh = width+100;
-	private Icon smallX;
-    private Icon smallO;
 	private Icon buttonX;
     private Icon buttonO;
+    private JButton reset;
+    private JLabel panelX;
+    private JLabel panelO;
     public GUI() throws IOException 
     {
     	//Window init
@@ -34,10 +33,16 @@ public class GUI extends JFrame
         setLayout(null);
         setLocationRelativeTo(null);
         //Symbols
-        smallX = new ImageIcon(getClass().getResource("/resources/active/delete30.png"));
-        smallO = new ImageIcon(getClass().getResource("/resources/active/circle107.png"));
         buttonX = new ImageIcon(getClass().getResource("/resources/buttons/delete30.png"));
         buttonO = new ImageIcon(getClass().getResource("/resources/buttons/circle107.png"));
+        //Reset button
+        reset = new JButton("Reset");
+        reset.setBounds(width/2-20, 10, 40, 40);
+        //active player panels
+        panelX = new JLabel(buttonX);
+        panelX.setBounds(10, 10, buttonX.getIconWidth(), buttonX.getIconHeight());
+        panelO = new JLabel(buttonO);
+        panelO.setBounds(width-10-buttonX.getIconWidth(),10, buttonO.getIconWidth(), buttonO.getIconHeight());
         //Game object
         game = new Game();
         game.reset();
@@ -96,6 +101,9 @@ public class GUI extends JFrame
             	this.add(buttons.get(i).get(j));
             }
         }
+        this.add(panelX);
+        this.add(panelO);
+        this.add(reset);
         this.setBackground(new Color(255,255,255));
     }
     void setButtons()
