@@ -56,10 +56,10 @@ public class GUI extends JFrame
         });
         //active player panels
         panelX = new JLabel(buttonX);
-        panelX.setBounds(10, 10, buttonX.getIconWidth(), buttonX.getIconHeight());
+        panelX.setBounds(6, 6, buttonX.getIconWidth(), buttonX.getIconHeight());
         panelX.setBorder(border);
         panelO = new JLabel(buttonO);
-        panelO.setBounds(width-10-buttonX.getIconWidth(),10, buttonO.getIconWidth(), buttonO.getIconHeight());
+        panelO.setBounds(width-6-buttonX.getIconWidth(),6, buttonO.getIconWidth(), buttonO.getIconHeight());
         //Game object
         game = new Game();
         game.reset();
