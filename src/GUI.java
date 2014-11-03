@@ -49,6 +49,7 @@ public class GUI extends JFrame
             for(int j=0;j<3;j++)
             {
             	buttons.get(i).add(new JButton());
+            	buttons.get(i).get(j).setFocusable(false);
             	final int x = i;
             	final int y = j;
             	buttons.get(i).get(j).addActionListener(new ActionListener() 
@@ -66,26 +67,18 @@ public class GUI extends JFrame
                     		{
 					            case 0:
 					            {
-					            	System.out.println("Draw");
 					            	JOptionPane.showMessageDialog(null, "Remis");
 					            	break;
 					            }
 					                     
 					            case 1:
 					            {
-					            	System.out.println("Won X");
 					            	JOptionPane.showMessageDialog(null, "Wygra³ Gracz X");
 					            	break;
 					            }					            		
 					            case 2:
 					            {
-					            	System.out.println("Won O");
-					            	JOptionPane.showMessageDialog(null, "Wygra³ Gracz Y");
-					            	break;
-					            }
-					            default:
-					            {
-					            	System.out.println("Nothing");
+					            	JOptionPane.showMessageDialog(null, "Wygra³ Gracz O");
 					            	break;
 					            }
                     		}

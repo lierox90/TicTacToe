@@ -40,7 +40,7 @@ public class WinnerChecker {
             lastPlayer = null;
             int successCounter = 1;
             for (int j = 0, len2 = field.get(i).size(); j < len2; j++) {
-                currPlayer = field.get(i).get(j).getPlayer();
+                currPlayer = field.get(j).get(i).getPlayer();
                 if (currPlayer == lastPlayer && (currPlayer != null && lastPlayer !=null)) {
                     successCounter++;
                     if (successCounter == len2) {
@@ -110,15 +110,6 @@ public class WinnerChecker {
 		
 		 if(m_player == null)
 		 m_player = checkDiagonalRight();
-		 
-		 if(m_player != null)
-		 {
-			 System.out.println(m_player.getName());
-		 }
-		 else
-		 {
-			 System.out.println("null");
-		 }
 		 
 		 return m_player;
 		
