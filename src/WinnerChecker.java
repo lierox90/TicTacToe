@@ -102,10 +102,10 @@ public class WinnerChecker {
 		 if(m_player == null)
 		 m_player = checkVertical();
 		
-		 else if(m_player == null)
+		 if(m_player == null)
 		 m_player = checkDiagonalLeft();
 		
-		 else if(m_player == null)
+		 if(m_player == null)
 		 m_player = checkDiagonalRight();
 		 
 		 return m_player;

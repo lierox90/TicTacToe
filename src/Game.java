@@ -11,12 +11,22 @@ public class Game {
 	private int filled;
 	
 	private WinnerChecker winCheck;
+	
+	public Game()
+	{
+		player1 = new Player();
+		player1.setName("X");
+        player2 = new Player();
+        player2.setName("O");
+        
+        winCheck = new WinnerChecker(this);
+	}
 
 	// Tworzy dwuch graczy i zaznacza jednego jako "player1"
 	
 	private void resetPlayers(){
-		player1 = new Player("Xsd");
-        player2 = new Player("Osd");
+		player1.setName("X");
+        player2.setName("O");
         setActive(player1);
 	}
 
@@ -68,10 +78,18 @@ public class Game {
 	        return squareCount == filled;
 	    }
 	 
-
-		 
+	 public int check(){
+		 int code=-1;
+		 Player playCheck = winCheck.check();
+		 if(playCheck == null)
+			 code = 0;
+		 if(playCheck.getName() == "X")
+			 code = 1;
+		 if(playCheck.getName() == "O")
+			 code = 2;
+		 return code;
+	 }
 	 
-		 
 	 }
  
 
