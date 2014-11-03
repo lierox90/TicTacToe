@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class WinnerChecker {
 	private Game currentGame;
@@ -8,14 +11,14 @@ public class WinnerChecker {
 	
 	//Sprawdzenie czy istnieje poziomowa kombinacja, ktora wygrywa 
 	private Player checkHorizontal() {
-        Tile[][] field = currentGame.getTable();
+		List<ArrayList<Tile>> field = currentGame.getTable();
         Player currPlayer;
         Player lastPlayer = null;
-        for (int i = 0, len = field.length; i < len; i++) {
+        for (int i = 0, len = field.size(); i < len; i++) {
             lastPlayer = null;
             int successCounter = 1;
-            for (int j = 0, len2 = field[i].length; j < len2; j++) {
-                currPlayer = field[i][j].getPlayer();
+            for (int j = 0, len2 = field.get(i).size(); j < len2; j++) {
+                currPlayer = field.get(i).get(j).getPlayer();
                 if (currPlayer == lastPlayer && (currPlayer != null && lastPlayer !=null)) {
                     successCounter++;
                     if (successCounter == len2) {
@@ -30,14 +33,14 @@ public class WinnerChecker {
 	
 	//Sprawdzenie czy istnieje pionowa kombinacja, ktora wygrywa 
 	private Player checkVertical() {
-        Tile[][] field = currentGame.getTable();
+		List<ArrayList<Tile>> field = currentGame.getTable();
         Player currPlayer;
         Player lastPlayer = null;
-        for (int i = 0, len = field.length; i < len; i++) {
+        for (int i = 0, len = field.size(); i < len; i++) {
             lastPlayer = null;
             int successCounter = 1;
-            for (int j = 0, len2 = field[i].length; j < len2; j++) {
-                currPlayer = field[j][i].getPlayer();
+            for (int j = 0, len2 = field.get(i).size(); j < len2; j++) {
+                currPlayer = field.get(i).get(j).getPlayer();
                 if (currPlayer == lastPlayer && (currPlayer != null && lastPlayer !=null)) {
                     successCounter++;
                     if (successCounter == len2) {
@@ -52,12 +55,12 @@ public class WinnerChecker {
 	
 	//Sprawdzenie czy istnieje diagonalna od lewej strony kombinacja, ktora wygrywa 
 	 private Player checkDiagonalLeft() {
-	        Tile[][] field = currentGame.getTable();
+		 	List<ArrayList<Tile>> field = currentGame.getTable();
 	        Player currPlayer;
 	        Player lastPlayer = null;
 	        int successCounter = 1;
-	        for (int i = 0, len = field.length; i < len; i++) {
-	            currPlayer = field[i][i].getPlayer();
+	        for (int i = 0, len = field.size(); i < len; i++) {
+	            currPlayer = field.get(i).get(i).getPlayer();
 	            if (currPlayer != null) {
 	                if (lastPlayer == currPlayer) {
 	                    successCounter++;
@@ -73,12 +76,12 @@ public class WinnerChecker {
 	 
 	//Sprawdzenie czy istnieje diagonalna od prawej strony kombinacja, ktora wygrywa 
 	 private Player checkDiagonalRight() {
-	        Tile[][] field = currentGame.getTable();
+		 	List<ArrayList<Tile>> field = currentGame.getTable();
 	        Player currPlayer;
 	        Player lastPlayer = null;
 	        int successCounter = 1;
-	        for (int i = 0, len = field.length; i < len; i++) {
-	            currPlayer = field[i][len - (i + 1)].getPlayer();
+	        for (int i = 0, len = field.size(); i < len; i++) {
+	            currPlayer = field.get(i).get(len - (i + 1)).getPlayer();
 	            if (currPlayer != null) {
 	                if (lastPlayer == currPlayer) {
 	                    successCounter++;

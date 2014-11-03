@@ -31,10 +31,20 @@ public class GUI extends JFrame
             for(int j=0;j<3;j++)
             {
             	buttons.get(i).add(new JButton());
+            	final int x = i;
+            	final int y = j;
             	buttons.get(i).get(j).addActionListener(new ActionListener() 
             	{ 
-                    public void actionPerformed(ActionEvent e)
+            		public void actionPerformed(ActionEvent e)
                     {
+                    	if(game.makeTurn(x, y))
+                    	{
+                    		System.out.println("Marked");
+                    	}
+                    	else
+                    	{
+                    		System.out.println("Already taken");
+                    	}
                     	
                     }
                 });

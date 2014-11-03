@@ -17,4 +17,8 @@ public class Tile {
     public Player getPlayer() {
         return player;
     }
+    public void clear()
+    {
+    	player = null;
+    }
 }

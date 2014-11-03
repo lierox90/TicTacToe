@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JButton;
+
 
 public class Game {
 	
@@ -5,7 +10,7 @@ public class Game {
 	private Player player2;
 	private Player activePlayer;
 	
-	private Tile[][] table;
+	private List<ArrayList<Tile>> table;
 	
 	private int squareCount = 9;
 	private int filled;
@@ -19,6 +24,16 @@ public class Game {
 		player1.setName("X");
         player2 = new Player();
         player2.setName("O");
+        
+        table = new ArrayList<ArrayList<Tile>>();
+        for(int i=0;i<3;i++)
+        {
+        	table.add(new ArrayList<Tile>());
+            for(int j=0;j<3;j++)
+            {
+            	table.get(i).add(new Tile());
+            }
+        }
         
         winCheck = new WinnerChecker(this);
 	}
@@ -34,16 +49,18 @@ public class Game {
 	//Wyczyszcza tablice
 	
 	private void resetTable() {
-        for (int i = 0, l = table.length; i < l; i++) {
-            for (int j = 0, l2 = table[i].length; j < l2; j++) {
-               table[i][j].isMarked();
+        for (int i = 0, l = table.size(); i < l; i++) 
+        {
+            for (int j = 0, l2 = table.get(i).size(); j < l2; j++) 
+            {
+               table.get(i).get(j).clear();
             }
         }
         filled = 0;
     }
 
-	// Zwraca wartosc table
-	 public Tile[][] getTable() {
+	// Zwraca wartosc tables
+	 public List<ArrayList<Tile>> getTable() {
 	        return table;
 	 }
 	 
@@ -60,10 +77,10 @@ public class Game {
 	 // Sprawdza czy wybrana klatka jest zajęta
 	 // Jerzeli klatka jest wolna ustawia odpowiednią figure
 	 public boolean makeTurn(int x, int y) {
-	        if (table[x][y].isMarked()){
+	        if (table.get(x).get(y).isMarked()){
 	            return false;
 	        }
-	        table[x][y].setPlayer(getActive());
+	        table.get(x).get(y).setPlayer(getActive());
 	        filled++;
 	        switchPlayers();
 	        return true;
@@ -89,6 +106,8 @@ public class Game {
 			 code = 1;
 		 if(playCheck.getName() == "O")
 			 code = 2;
+		 if(!isTableFilled())
+			 code = -1;
 		 return code;
 	 }
 	 
