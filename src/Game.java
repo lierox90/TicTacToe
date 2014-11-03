@@ -12,6 +12,7 @@ public class Game {
 	
 	private WinnerChecker winCheck;
 	
+	//konstruktor do tworzenia nowych graczy i sadzia na poczatku gry
 	public Game()
 	{
 		player1 = new Player();
@@ -77,7 +78,8 @@ public class Game {
 	 public boolean isTableFilled() {
 	        return squareCount == filled;
 	    }
-	 
+	 //metoda sluzaca do sprawdzania kto z graczy wygral albo czy jest remis i zwracajaca wartosc
+	 //code, ktora bedzie odpowiedziana za odpowiednie pop-upy
 	 public int check(){
 		 int code=-1;
 		 Player playCheck = winCheck.check();
