@@ -8,6 +8,11 @@ public class Tile
     {
         this.player = p_player;
     }
+    //Return signature of player that selected this tile
+    public Player getPlayer() 
+    {
+        return player;
+    }
     //Checks if signature is placed upon selected tile
     public boolean isMarked() 
     {
@@ -16,11 +21,6 @@ public class Tile
             return true;
         }
         return false;
-    }
-    //Return signature of player that selected this tile
-    public Player getPlayer() 
-    {
-        return player;
     }
     //Clears tile upon interrupted of finished game
     public void clear()

@@ -3,6 +3,7 @@ import java.io.IOException;
 
 public class Main 
 {
+	static GUI visualisation;
     public static void main(String[] args) 
     {
         EventQueue.invokeLater(new Runnable() 
@@ -12,7 +13,7 @@ public class Main
             {
                 try 
                 {
-					new GUI();
+                	visualisation = new GUI();
 				} 
                 catch (IOException e) 
 				{

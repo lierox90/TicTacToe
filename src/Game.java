@@ -60,7 +60,7 @@ public class Game
         return table;
     }
 	//Sets current player
-	private void setActive(Player player) 
+	public void setActive(Player player) 
 	{
         activePlayer = player;
 	}

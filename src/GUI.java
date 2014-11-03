@@ -142,7 +142,7 @@ public class GUI extends JFrame
         this.setBackground(new Color(255,255,255));
     }
     //GUI reset
-    void reset()
+    private void reset()
     {
     	for(int i=0;i<3;i++)
         {
@@ -155,7 +155,7 @@ public class GUI extends JFrame
 		panelO.setBorder(null);
     }
     //Provieds coordinates for visual placement of buttons
-    void setButtons()
+    private void setButtons()
     {
     	int step = (width-6)/3;
     	int initH = heigh-width-23;
