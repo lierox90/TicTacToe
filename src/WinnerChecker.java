@@ -111,6 +111,15 @@ public class WinnerChecker {
 		 if(m_player == null)
 		 m_player = checkDiagonalRight();
 		 
+		 if(m_player != null)
+		 {
+			 System.out.println(m_player.getName());
+		 }
+		 else
+		 {
+			 System.out.println("null");
+		 }
+		 
 		 return m_player;
 		
 	}

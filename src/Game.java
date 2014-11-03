@@ -58,6 +58,13 @@ public class Game {
         }
         filled = 0;
     }
+	
+	//Resetuje calosc
+	public void reset()
+	{
+		resetPlayers();
+		resetTable();
+	}
 
 	// Zwraca wartosc tables
 	 public List<ArrayList<Tile>> getTable() {
@@ -101,13 +108,20 @@ public class Game {
 		 int code=-1;
 		 Player playCheck = winCheck.check();
 		 if(playCheck == null)
-			 code = 0;
-		 if(playCheck.getName() == "X")
-			 code = 1;
-		 if(playCheck.getName() == "O")
-			 code = 2;
-		 if(!isTableFilled())
-			 code = -1;
+		 {
+			 if(!isTableFilled())
+				 code = -1;
+			 else
+				 code = 0;
+		 }
+		 else
+		 {
+			 if(playCheck.getName() == "X")
+				 code = 1;
+			 if(playCheck.getName() == "O")
+				 code = 2;
+		 }
+
 		 return code;
 	 }
 	 

@@ -23,6 +23,9 @@ public class GUI extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         setLayout(null);
+        //Game object
+        game = new Game();
+        game.reset();
         //Buttons Grid
         buttons = new ArrayList<ArrayList<JButton>>();
         for(int i=0;i<3;i++)
@@ -37,13 +40,26 @@ public class GUI extends JFrame
             	{ 
             		public void actionPerformed(ActionEvent e)
                     {
+            			String playerSymbol = game.getActive().getName();
                     	if(game.makeTurn(x, y))
                     	{
-                    		System.out.println("Marked");
+                    		buttons.get(x).get(y).setText(playerSymbol);
+                    		switch (game.check()) 
+                    		{
+					            case 0:  System.out.println("Draw");
+					                     break;
+					            case 1:  System.out.println("Won X");
+					                     break;
+					            case 2:  System.out.println("Won O");
+					                     break;
+					            default: System.out.println("Nothing");
+					                     break;
+                    		}
+                    		//System.out.println("Marked");
                     	}
                     	else
                     	{
-                    		System.out.println("Already taken");
+                    		//System.out.println("Already taken");
                     	}
                     	
                     }
@@ -51,8 +67,6 @@ public class GUI extends JFrame
             }
         }
         setButtons();
-        //Game object
-        game = new Game();
         // Main addition
         for(int i=0;i<3;i++)
         {
